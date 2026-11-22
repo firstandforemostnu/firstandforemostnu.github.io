@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>First &amp; Foremost | Literary magazine at Northeastern University</title>
+<meta name="description" content="First &amp; Foremost is a literary magazine for first-generation, low-income students at Northeastern University. Read past issues, meet the staff and submit your work.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F7F1E3;
+  --surface: #FFFBF2;
+  --ink: #2A2547;
+  --ink-soft: #5A5574;
+  --sky: #C9DEF2;
+  --lilac: #DCCFF0;
+  --sky-deep: #3D6EA6;
+  --lilac-deep: #6B4FAE;
+  --line: #E4D9C1;
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1C1A2B; --surface: #25223A; --ink: #F3EEDF; --ink-soft: #C3BDD6;
+    --sky: #2C4566; --lilac: #3E3263; --sky-deep: #A3CAF0; --lilac-deep: #C8B6F2;
+    --line: #36314F; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #1C1A2B; --surface: #25223A; --ink: #F3EEDF; --ink-soft: #C3BDD6;
+  --sky: #2C4566; --lilac: #3E3263; --sky-deep: #A3CAF0; --lilac-deep: #C8B6F2;
+  --line: #36314F; color-scheme: dark;
+}
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 80px); }
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--paper);
+}
+img { max-width: 100%; display: block; }
+a { color: var(--sky-deep); text-underline-offset: 3px; }
+a:hover { color: var(--lilac-deep); }
+:focus-visible { outline: 3px solid var(--lilac-deep); outline-offset: 3px; border-radius: 4px; }
+
+/* Header */
+header.site {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--paper); border-bottom: 1px solid var(--line);
+}
+header.site::after {
+  content: ""; display: block; height: 4px;
+  background: linear-gradient(90deg, var(--sky) 0 50%, var(--lilac) 50% 100%);
+}
+.bar {
+  max-width: 1080px; margin: 0 auto; padding: 0.75rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--ink); }
+.logo-slot { width: 48px; height: 48px; flex: none; display: block; }
+.logo-slot img { width: 100%; height: 100%; object-fit: contain; }
+.brand-name { font-family: var(--display); font-size: 1.3rem; line-height: 1; }
+nav ul { list-style: none; display: flex; gap: 0.25rem; margin: 0; padding: 0; flex-wrap: wrap; }
+nav a {
+  display: block; padding: 0.45rem 0.85rem; border-radius: 999px;
+  text-decoration: none; color: var(--ink-soft); font-weight: 700; font-size: 0.95rem;
+}
+nav a:hover { color: var(--ink); background: var(--sky); }
+nav a[aria-current="page"] { color: var(--ink); background: var(--lilac); }
+
+main { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem 4rem; }
+.view[hidden] { display: none; }
+
+/* Home: current theme */
+.theme {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 3rem; align-items: center; padding: 3.5rem 0 3rem;
+}
+.now {
+  display: inline-block; margin: 0 0 1rem; padding: 0.3rem 0.85rem; border-radius: 999px;
+  background: var(--sky); color: var(--ink); font-weight: 700; font-size: 0.95rem;
+}
+.theme h1 {
+  font-family: var(--display); font-weight: 400; margin: 0 0 1.25rem;
+  font-size: clamp(5rem, 14vw, 9rem); line-height: 0.9; letter-spacing: -0.01em;
+  text-shadow: 0.045em 0.045em 0 var(--lilac);
+}
+.theme h1 small { display: block; font-size: 0.22em; line-height: 1.3; text-shadow: none; color: var(--ink-soft); margin-bottom: 0.4rem; }
+.prompts { margin: 0 0 1.5rem; padding: 0; list-style: none; }
+.prompts li {
+  font-family: var(--display); font-size: clamp(1.15rem, 2.2vw, 1.4rem); line-height: 1.35;
+  padding: 0.55rem 0 0.55rem 1rem; border-left: 4px solid var(--lilac);
+}
+.prompts li:nth-child(2) { border-color: var(--sky); }
+.details { margin: 0 0 1.75rem; max-width: 46ch; }
+.details p { margin: 0 0 0.6rem; }
+.details strong { color: var(--lilac-deep); }
+.poster-wrap { position: relative; justify-self: center; max-width: 430px; width: 100%; }
+.poster-wrap::before {
+  content: ""; position: absolute; inset: 0; transform: translate(16px, 16px);
+  background: var(--sky); border-radius: 6px; z-index: 0;
+}
+.poster-wrap::after {
+  content: ""; position: absolute; inset: 0; transform: translate(-12px, -12px);
+  border: 2px solid var(--lilac-deep); border-radius: 6px; z-index: 0; opacity: 0.55;
+}
+.poster-wrap img { position: relative; z-index: 1; width: 100%; height: auto; border-radius: 4px; }
+
+.about {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2.5rem; align-items: center;
+  margin-top: 2.5rem; padding: 2.5rem; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 22px;
+}
+.about-logo { width: clamp(120px, 18vw, 180px); height: auto; }
+.amp {
+  font-family: var(--display); font-size: clamp(7rem, 16vw, 11rem); line-height: 0.8; margin: 0;
+  color: var(--lilac); text-shadow: 0.05em 0.04em 0 var(--sky); user-select: none;
+}
+.about h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin: 0 0 0.6rem; line-height: 1.15; }
+.about p { margin: 0 0 1.25rem; color: var(--ink-soft); max-width: 58ch; }
+
+h2.page-title {
+  font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 5vw, 2.9rem);
+  line-height: 1.1; margin: 3rem 0 0.5rem;
+}
+.lede { color: var(--ink-soft); max-width: 60ch; margin: 0 0 2.5rem; }
+
+.actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.btn {
+  font: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+  padding: 0.6rem 1.15rem; border-radius: 999px; border: 2px solid var(--ink);
+  background: var(--ink); color: var(--paper); text-decoration: none; display: inline-block;
+}
+.btn:hover { background: var(--lilac-deep); border-color: var(--lilac-deep); color: var(--paper); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--sky); color: var(--ink); border-color: var(--ink); }
+.btn.big { font-size: 1.05rem; padding: 0.8rem 1.5rem; }
+
+/* Issues */
+.issues { display: grid; gap: 1.25rem; }
+.issue {
+  display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 1.5rem;
+  padding: 1.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+}
+.cover {
+  aspect-ratio: 3 / 4; border-radius: 6px; padding: 0.75rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-family: var(--display); color: var(--ink);
+}
+.issue:nth-child(odd) .cover { background: var(--sky); }
+.issue:nth-child(even) .cover { background: var(--lilac); }
+.cover .vol { font-family: var(--body); font-size: 0.8rem; font-weight: 700; }
+.cover .mark { font-size: 3.2rem; line-height: 1; }
+.issue h3 { font-family: var(--display); font-weight: 400; font-size: 1.6rem; margin: 0; line-height: 1.2; }
+.issue .when { color: var(--ink-soft); margin: 0.15rem 0 0.6rem; font-size: 0.95rem; }
+.issue .blurb { margin: 0 0 1rem; max-width: 62ch; }
+.cover-img { width: 100%; height: auto; aspect-ratio: 605 / 935; object-fit: cover; border-radius: 6px; box-shadow: 6px 6px 0 var(--lilac); }
+.issue:nth-child(even) .cover-img { box-shadow: 6px 6px 0 var(--sky); }
+.issue .num { color: var(--lilac-deep); font-weight: 700; margin: 0 0 0.15rem; font-size: 0.95rem; }
+.reader { grid-column: 1 / -1; background: var(--paper); border-radius: 14px; padding: 1rem; outline: none; }
+.reader:fullscreen { display: flex; flex-direction: column; justify-content: center; padding: 1.5rem; }
+.spread { display: flex; justify-content: center; gap: 4px; }
+.page {
+  flex: 0 1 auto; width: min(100%, calc((min(78vh, 900px)) * 605 / 935)); aspect-ratio: 605 / 935;
+  background-color: #fff; background-repeat: no-repeat; border-radius: 3px;
+  box-shadow: 0 1px 0 var(--line), 0 0 0 1px var(--line);
+}
+.spread.two .page { width: min(50%, calc((min(78vh, 900px)) * 605 / 935)); }
+.reader:fullscreen .page { width: min(100%, calc(88vh * 605 / 935)); }
+.reader:fullscreen .spread.two .page { width: min(50%, calc(88vh * 605 / 935)); }
+.reader-bar { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 0.9rem; flex-wrap: wrap; }
+.reader-bar .count { min-width: 9ch; text-align: center; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.btn:disabled { opacity: 0.35; cursor: default; background: var(--ink); border-color: var(--ink); }
+.reader-empty { padding: 2rem 1rem; text-align: center; color: var(--ink-soft); }
+
+/* Staff */
+.staff { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 2rem 1.5rem; }
+.portrait {
+  width: 100%; aspect-ratio: 1; border-radius: 50% 50% 12px 12px; margin-bottom: 0.9rem;
+  display: grid; place-items: center; font-family: var(--display); font-size: 3.4rem; color: var(--ink);
+  overflow: hidden;
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.person:nth-child(4n+1) .portrait, .person:nth-child(4n+4) .portrait { background: var(--sky); }
+.person:nth-child(4n+2) .portrait, .person:nth-child(4n+3) .portrait { background: var(--lilac); }
+.person h3 { font-family: var(--display); font-weight: 400; font-size: 1.35rem; margin: 0; line-height: 1.2; }
+.person .role { color: var(--lilac-deep); font-weight: 700; margin: 0.1rem 0 0.4rem; font-size: 0.95rem; }
+.person .bio { margin: 0; color: var(--ink-soft); font-size: 0.98rem; }
+
+/* Resources */
+.res-group { margin-bottom: 2.75rem; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 1.5rem; }
+.res-group > header h3 { font-family: var(--display); font-weight: 400; font-size: 1.5rem; margin: 0 0 0.35rem; line-height: 1.2; }
+.res-group > header p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+.res-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.res-list li { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.res-list a, .res-name { font-weight: 700; font-size: 1.08rem; }
+.res-list p { margin: 0.2rem 0 0; color: var(--ink-soft); max-width: 62ch; }
+.res-group:nth-of-type(odd) > header { border-left: 6px solid var(--sky); padding-left: 0.9rem; }
+.res-group:nth-of-type(even) > header { border-left: 6px solid var(--lilac); padding-left: 0.9rem; }
+
+footer.site { border-top: 1px solid var(--line); }
+footer .bar { padding: 1.75rem 1.25rem; color: var(--ink-soft); font-size: 0.95rem; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+footer p { margin: 0; max-width: 70ch; }
+
+@media (max-width: 800px) {
+  .theme { grid-template-columns: 1fr; padding-top: 2rem; gap: 2.5rem; }
+  .poster-wrap { max-width: 340px; }
+  .about { grid-template-columns: 1fr; padding: 1.75rem; gap: 1rem; }
+  .amp { font-size: 6rem; }
+  .issue { grid-template-columns: 1fr; }
+  .issue .cover-wrap { max-width: 150px; }
+  .reader { padding: 0.5rem 0 0.75rem; }
+  .res-group { grid-template-columns: 1fr; gap: 0.75rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .poster-wrap::before { animation: settle 1s ease-out both; }
+  @keyframes settle { from { transform: translate(0, 0); opacity: 0; } to { transform: translate(16px, 16px); opacity: 1; } }
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="#home">
+      <span class="logo-slot"><img src="logo.png" alt=""></span>
+      <span class="brand-name">First &amp; Foremost</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#home" data-view="home">Home</a></li>
+        <li><a href="#issues" data-view="issues">Past issues</a></li>
+        <li><a href="#staff" data-view="staff">Meet the staff</a></li>
+        <li><a href="#resources" data-view="resources">Resources</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME: CURRENT THEME -->
+  <section class="view" id="view-home" aria-labelledby="t-home">
+    <div class="theme">
+      <div>
+        <p class="now">Issue 05 is open for submissions</p>
+        <h1 id="t-home"><small>This issue’s theme is</small>Time</h1>
+        <ul class="prompts">
+          <li>What does the passage of time mean for your story?</li>
+          <li>How has your family history shaped you?</li>
+          <li>How have you grown over time?</li>
+        </ul>
+        <div class="details">
+          <p>We welcome every kind of work: poetry, fiction, essays, photography, paintings, collages, videos and anything else you make.</p>
+          <p><strong>$100 gift card</strong> for the piece that best captures the theme.</p>
+          <p id="deadline" hidden></p>
+        </div>
+        <div class="actions">
+          <a class="btn big" id="submit-link" href="#" target="_blank" rel="noopener">Submit your work</a>
+        </div>
+      </div>
+      <figure class="poster-wrap" style="margin:0">
+        <img src="issue-05-time-poster.jpg" alt="First &amp; Foremost call for submissions poster for the theme Time, with vintage clocks inside a gold picture frame and a QR code to submit." width="1100" height="1467">
+      </figure>
+    </div>
+
+    <div class="about">
+      <img class="about-logo" src="logo.png" alt="First and Foremost Literary Magazine logo: a hand holding a pencil and paintbrush in a peace sign, ringed by books">
+      <div>
+        <h2>Writing from the first in our families to get here.</h2>
+        <p>The name of the magazine First and Foremost was born out of our motivations to make the publication. At a predominantly white, wealthy private university, it is easy for the struggles of marginalized students to go unaddressed. In particular, first-gen, low-income, and/or undocumented students have rarely had a place to voice their opinions and feelings.</p>
+        <p>First, for the students in this publication will be accomplishing many firsts in college, the first in their family to be going to university, the first to speak up against inequality, and the first to prioritize themselves.</p>
+        <p>Foremost, for the importance that these students have at our university and for the place that they deserve at the table that they have not had before. First and Foremost was created to be a platform for these students, to share their creativity, passions, and thoughts.</p>
+        <div class="actions">
+          <a class="btn ghost" href="#issues">Read past issues</a>
+          <a class="btn ghost" href="#staff">Meet the staff</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST ISSUES -->
+  <section class="view" id="view-issues" aria-labelledby="t-issues" hidden>
+    <h2 class="page-title" id="t-issues" style="margin-bottom:2rem">Past issues</h2>
+    <div class="issues" id="issue-list"></div>
+  </section>
+
+  <!-- MEET THE STAFF -->
+  <section class="view" id="view-staff" aria-labelledby="t-staff" hidden>
+    <h2 class="page-title" id="t-staff">Meet the staff</h2>
+    <p class="lede">The students who read every submission, edit every page and put each issue together.</p>
+    <div class="staff" id="staff-list"></div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="view" id="view-resources" aria-labelledby="t-resources" hidden>
+    <h2 class="page-title" id="t-resources">Resources for first-gen, low-income students</h2>
+    <p class="lede">Places to find money, community and support.</p>
+    <div id="resource-list"></div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="bar">
+    <p>First &amp; Foremost, published by the First-Gen, Undocumented, Low-Income community at Northeastern University. 405 Lake Hall, Boston, MA 02115.</p>
+    <p>Want to join the staff? Email <a href="mailto:firstandforemostnu@gmail.com">firstandforemostnu@gmail.com</a> or find us on Instagram at <a href="https://www.instagram.com/firstandforemostnu" target="_blank" rel="noopener">@firstandforemostnu</a>.</p>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================
+   EDIT YOUR CONTENT HERE
+   ========================================================== */
+
+// Current call for submissions (shown on the home page)
+const CURRENT = {
+  submitUrl: "https://forms.gle/S6sniGMvAPf7JRyD9",
+  deadline: "" // e.g. "Submissions close December 5." Leave "" to hide.
+};
+
+// Past issues, newest first. Page images are stored with the site.
+const ISSUES = [
+  { key: "i4", no: "04", title: "Alien", when: "Fall 2025", pages: 46, chunks: [12,12,12,10], cover: "issue-04-cover.jpg",
+    blurb: "What it means to feel alien: to be unwelcome, to find your way through unfamiliar territory, to feel out of place in your own surroundings." },
+  { key: "i3", no: "03", title: "Garden", when: "Spring 2024", pages: 44, chunks: [12,12,12,8], cover: "issue-03-cover.jpg",
+    blurb: "Poems, essays and collage about mothers, homelands and mother tongues, and the families and histories that shaped us." },
+  { key: "i2", no: "02", title: "Issue 02", when: "Spring 2023", pages: 76, chunks: [12,12,12,12,12,12,4], cover: "issue-02-cover.jpg",
+    blurb: "Our second year: stories, poems, essays and visual art from first-generation, undocumented and low-income students." },
+  { key: "i1", no: "01", title: "Issue 01", when: "Spring 2022", pages: 47, chunks: [12,12,12,11], cover: "issue-01-cover.jpg",
+    blurb: "Where it all started. Our first issue, made by a team of fewer than five editors." }
+];
+const STRIPS = {
+  i4: ["issue-04-pages-1.jpg", "issue-04-pages-2.jpg", "issue-04-pages-3.jpg", "issue-04-pages-4.jpg"],
+  i3: ["issue-03-pages-1.jpg", "issue-03-pages-2.jpg", "issue-03-pages-3.jpg", "issue-03-pages-4.jpg"],
+  i2: ["issue-02-pages-1.jpg", "issue-02-pages-2.jpg", "issue-02-pages-3.jpg", "issue-02-pages-4.jpg", "issue-02-pages-5.jpg", "issue-02-pages-6.jpg", "issue-02-pages-7.jpg"],
+  i1: ["issue-01-pages-1.jpg", "issue-01-pages-2.jpg", "issue-01-pages-3.jpg", "issue-01-pages-4.jpg"]
+};
+
+// photo: a link to an image, or "" to show initials.
+const STAFF = [
+  { name: "Niharika Banerjee", role: "President", bio: "Political Science and International Affairs major with a minor in Data Science. She writes poetry, short stories and creative nonfiction, and believes in the power of the spoken word to connect people.", photo: "" },
+  { name: "Gavin Chang", role: "Treasurer", bio: "Economics and business administration major concentrating in finance. He keeps the organizational side of the magazine running smoothly behind the scenes.", photo: "" },
+  { name: "Arushee Tirunagari", role: "Creative Director", bio: "Pre-med student who grew up in Singapore. She loves finding new cafés, going to concerts and taking long walks through Boston.", photo: "" },
+  { name: "Zoe Armstrong Auerbach", role: "Editing Team", bio: "", photo: "" },
+  { name: "Abigail Dolan", role: "Editing Team", bio: "", photo: "" },
+  { name: "Ava Kalpan", role: "Editing Team", bio: "", photo: "" },
+  { name: "Giada Palazzo", role: "Editing Team", bio: "", photo: "" },
+  { name: "Khue Viet (Kevin) Nguyen", role: "Editing Team", bio: "", photo: "" }
+];
+
+const RESOURCES = [
+  { group: "At Northeastern", note: "Campus centers and student groups.", items: [
+    { name: "U-F1RST (formerly the First-Gen, Low-Income Student Union)", url: "https://www.instagram.com/northeasternfglisu/", desc: "Student organization dedicated to community and advocacy for first-gen, low-income students at Northeastern." },
+    { name: "Center for Intercultural Engagement and Social Justice Resource Center", url: "https://cie.sites.northeastern.edu/", desc: "Justice-oriented spaces that build community across difference through programs, dialogues and affinity groups." },
+    { name: "John D. O’Bryant African American Institute", url: "https://www.northeastern.edu/aai/", desc: "Programs, resources and a welcoming community focused on students of African origin." },
+    { name: "Latinx Student Cultural Center", url: "https://latinx.sites.northeastern.edu/", desc: "A home away from home that supports Latinx students’ academic, personal and professional growth." },
+    { name: "Asian American Center", url: "https://asianamericancenter.northeastern.edu/", desc: "Supports Asian American students in exploring identity and shaping their experience at Northeastern." },
+    { name: "NU Mutual Aid", url: "https://numutualaid.org/", desc: "A student network dedicated to the well-being of Northeastern students, staff and community members." }
+  ]},
+  { group: "Undocumented students", note: "Support regardless of status.", items: [
+    { name: "Student Immigrant Movement", url: "https://twitter.com/join_sim", desc: "Undocumented youth-led organization in Massachusetts with chapters in Greater Boston, New Bedford, Central Mass and the North Shore." },
+    { name: "Immigrants Rising", url: "https://immigrantsrising.org", desc: "Guides, scholarship lists and legal resources for undocumented students and young people." },
+    { name: "TheDream.US", url: "https://www.thedream.us", desc: "College scholarships for immigrant students, including those without legal status." }
+  ]},
+  { group: "Paying for college", note: "Aid, grants and scholarships.", items: [
+    { name: "Federal Student Aid (FAFSA)", url: "https://studentaid.gov", desc: "Fill out the FAFSA every year to qualify for Pell Grants, work-study and other federal aid." },
+    { name: "QuestBridge", url: "https://www.questbridge.org", desc: "Connects high-achieving, low-income students with full scholarships at partner colleges." },
+    { name: "Hispanic Scholarship Fund", url: "https://www.hsf.net", desc: "Scholarships and support services for students of Hispanic heritage." },
+    { name: "Scholarship America", url: "https://scholarshipamerica.org", desc: "Scholarship programs and emergency grants for students facing unexpected costs." }
+  ]},
+  { group: "Community and support", note: "You’re not the only one figuring this out.", items: [
+    { name: "Center for First-generation Student Success", url: "https://firstgen.naspa.org", desc: "Research, programs and a network of colleges committed to first-gen students." },
+    { name: "I’m First", url: "https://imfirst.org", desc: "Stories, guides and a community made for first-generation college students." }
+  ]}
+];
+
+/* ========================================================== */
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const initials = n => n.split(/\s+/).map(w => w[0] || "").join("").slice(0, 2).toUpperCase();
+
+document.getElementById("submit-link").href = CURRENT.submitUrl;
+if (CURRENT.deadline) { const d = document.getElementById("deadline"); d.textContent = CURRENT.deadline; d.hidden = false; }
+
+document.getElementById("issue-list").innerHTML = ISSUES.map((iss, i) => `<article class="issue">
+    <div class="cover-wrap"><img class="cover-img" src="${iss.cover}" alt="Cover of First &amp; Foremost ${esc(iss.title === "Issue " + iss.no ? "Issue " + iss.no : "Issue " + iss.no + ", " + iss.title)}" loading="lazy"></div>
+    <div>
+      <p class="num">Issue ${iss.no}</p>
+      <h3>${esc(iss.title === "Issue " + iss.no ? iss.when : iss.title)}</h3>
+      <p class="when">${esc(iss.title === "Issue " + iss.no ? iss.pages + " pages" : iss.when + ", " + iss.pages + " pages")}</p>
+      <p class="blurb">${esc(iss.blurb)}</p>
+      <div class="actions">
+        <button class="btn" type="button" data-toggle="${i}" aria-expanded="false" aria-controls="reader-${i}">Read this issue</button>
+      </div>
+    </div>
+    <div class="reader" id="reader-${i}" tabindex="-1" hidden></div>
+  </article>`).join("");
+
+const wide = window.matchMedia("(min-width: 760px)");
+const readers = {};
+
+function pageStyle(iss, p) {
+  let c = 0, k = p;
+  while (k >= iss.chunks[c]) { k -= iss.chunks[c]; c++; }
+  const n = iss.chunks[c], url = (STRIPS[iss.key] || [])[c];
+  if (!url) return "";
+  const y = n > 1 ? (k / (n - 1)) * 100 : 0;
+  return `background-image:url('${url}');background-size:100% ${n * 100}%;background-position:0 ${y}%`;
+}
+function viewPages(st) {
+  const iss = st.iss, last = iss.pages - 1;
+  if (!wide.matches || st.p === 0) return [st.p];
+  return st.p + 1 <= last ? [st.p, st.p + 1] : [st.p];
+}
+function draw(st) {
+  const iss = st.iss;
+  if (!STRIPS[iss.key] || !STRIPS[iss.key].length) {
+    st.el.innerHTML = '<p class="reader-empty">This issue’s pages are still being added.</p>';
+    return;
+  }
+  if (wide.matches && st.p > 0 && st.p % 2 === 0) st.p -= 1;
+  const ps = viewPages(st);
+  const label = ps.length > 1 ? `Pages ${ps[0] + 1}–${ps[1] + 1} of ${iss.pages}` : `Page ${ps[0] + 1} of ${iss.pages}`;
+  st.el.innerHTML = `<div class="spread${ps.length > 1 ? " two" : ""}">${ps.map(p =>
+      `<div class="page" role="img" aria-label="Issue ${iss.no}, page ${p + 1}" style="${pageStyle(iss, p)}"></div>`).join("")}</div>
+    <div class="reader-bar">
+      <button class="btn ghost" type="button" data-act="prev" ${st.p === 0 ? "disabled" : ""} aria-label="Previous page">Previous</button>
+      <span class="count" aria-live="polite">${label}</span>
+      <button class="btn ghost" type="button" data-act="next" ${ps[ps.length - 1] >= iss.pages - 1 ? "disabled" : ""} aria-label="Next page">Next</button>
+      ${document.fullscreenEnabled ? '<button class="btn ghost" type="button" data-act="full">' + (document.fullscreenElement === st.el ? "Exit full screen" : "Full screen") + "</button>" : ""}
+    </div>`;
+}
+function turn(st, dir) {
+  const step = wide.matches ? (dir > 0 ? (st.p === 0 ? 1 : 2) : (st.p <= 1 ? st.p : 2)) : 1;
+  const np = st.p + dir * step;
+  if (np < 0 || np > st.iss.pages - 1) return;
+  st.p = np; draw(st);
+}
+
+document.getElementById("issue-list").addEventListener("click", e => {
+  const b = e.target.closest("[data-toggle]");
+  if (b) {
+    const i = +b.dataset.toggle, box = document.getElementById("reader-" + i);
+    if (!box.hidden) { box.hidden = true; box.innerHTML = ""; delete readers[i]; b.textContent = "Read this issue"; b.setAttribute("aria-expanded", "false"); return; }
+    readers[i] = { iss: ISSUES[i], el: box, p: 0 };
+    box.hidden = false; draw(readers[i]); box.focus({ preventScroll: true });
+    box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    b.textContent = "Close issue"; b.setAttribute("aria-expanded", "true");
+    return;
+  }
+  const a = e.target.closest("[data-act]");
+  if (!a) return;
+  const box = a.closest(".reader"), st = readers[+box.id.split("-")[1]];
+  if (a.dataset.act === "prev") turn(st, -1);
+  if (a.dataset.act === "next") turn(st, 1);
+  if (a.dataset.act === "full") {
+    if (document.fullscreenElement) document.exitFullscreen(); else box.requestFullscreen().catch(() => {});
+  }
+});
+document.getElementById("issue-list").addEventListener("keydown", e => {
+  const box = e.target.closest(".reader"); if (!box) return;
+  const st = readers[+box.id.split("-")[1]]; if (!st) return;
+  if (e.key === "ArrowRight") { e.preventDefault(); turn(st, 1); }
+  if (e.key === "ArrowLeft") { e.preventDefault(); turn(st, -1); }
+});
+document.addEventListener("fullscreenchange", () => Object.values(readers).forEach(draw));
+wide.addEventListener("change", () => Object.values(readers).forEach(draw));
+
+document.getElementById("staff-list").innerHTML = STAFF.map(p => `<div class="person">
+  <div class="portrait">${p.photo ? `<img src="${esc(p.photo)}" alt="${esc(p.name)}">` : `<span aria-hidden="true">${esc(initials(p.name))}</span>`}</div>
+  <h3>${esc(p.name)}</h3><p class="role">${esc(p.role)}</p><p class="bio">${esc(p.bio)}</p>
+</div>`).join("");
+
+document.getElementById("resource-list").innerHTML = RESOURCES.map(g => `<section class="res-group">
+  <header><h3>${esc(g.group)}</h3></header>
+  <ul class="res-list">${g.items.map(r => `<li>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>` : `<strong class="res-name">${esc(r.name)}</strong>`}<p>${esc(r.desc)}</p></li>`).join("")}</ul>
+</section>`).join("");
+
+const VIEWS = ["home", "issues", "staff", "resources"];
+function route() {
+  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "home";
+  VIEWS.forEach(n => { document.getElementById("view-" + n).hidden = n !== v; });
+  document.querySelectorAll("nav a").forEach(a => {
+    if (a.dataset.view === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
